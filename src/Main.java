@@ -42,7 +42,8 @@ public class Main {
 
         System.out.println("Генерируем hash-функцию сообщения для проверки");
         byte[] newMessageBytes = getMessageBytes();
-        byte[] newMessageHash = md.digest(newMessageBytes);
+        MessageDigest mdCheck = MessageDigest.getInstance("SHA-256");
+        byte[] newMessageHash = mdCheck.digest(newMessageBytes);
 
         System.out.println("Проверяем hash-функции");
         boolean isCorrect = Arrays.equals(decryptedMessageHash, newMessageHash);
